@@ -19,6 +19,12 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           flutter-version: 1.22.5
+      - name: Formatting code
+        run: flutter format lib
+      - name: Analyzing code
+        run: flutter analyze
+      - name: Running tests
+        run: ./run_tests.sh
       - name: Building APK
         run: ./build_android.sh
         env:
