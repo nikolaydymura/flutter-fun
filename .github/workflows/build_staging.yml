@@ -29,3 +29,13 @@ jobs:
         run: ./build_android.sh
         env:
           FLAVOR: staging
+      - name: Uploading artefact to App Center
+        uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: flutter-edu/untitled-android-staging
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Testers
+          file: build/app/outputs/flutter-apk/app-staging-release.apk
+          notifyTesters: true
+          gitReleaseNotes: true
+          debug: false
